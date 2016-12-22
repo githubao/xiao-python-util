@@ -21,7 +21,7 @@
 
 
 def main():
-    print("do sth")
+    pass
 
 
 if __name__ == '__main__':
