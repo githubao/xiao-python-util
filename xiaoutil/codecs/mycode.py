@@ -56,26 +56,24 @@ def encode_decode():
     print('in unicode format, i am {{{}}} and {{{}}} in binary'.format(byte_uni, uni_bin))
     print('in utf-8 format, i am {{{}}} and {{{}}} in binary'.format(byte_utf8, utf8_bin))
     print('in gbk format, i am {{{}}} and {{{}}} in binary'.format(byte_gbk, gbk_bin))
-
-    print()
-
-    print('as a binary, so when i am in utf8 bin format, if someone use gbk to interpret me, i will be messy.')
-
-    print()
-
-    print(
-            'i am unicode {{{}}}. if i want to be transferred in network or saved one disk, i should be 0&1 format as byte array for saving space.\n'
-            'i will be : {{{}}} using unicode-escape to interpret; i will be : {{{}}} using utf8 to interpret;\n'
-            'i will be : {{{}}} using gbk to interpret.'.format(
-                    str_raw, unicode_use_uni_to_byte, unicode_use_utf8_to_byte, unicode_use_gbk_to_byte))
+    print('so when i am in utf8 bin format, if someone use gbk to interpret me, i will be messy.')
 
     print()
 
     print(
-        'i am bytes {{{}}} in unicode-escape format; i am bytes {{{}}} in utf8 format; i am bytes {{{}}} in gbk format.\n'
-        'in memory, we must be transformed to unicode format so that we could be understood, for both machine and human.\n'
-        'use different encoding format to decode, we will be in uniform unicode format: {{{}}}'
-        ''.format(byte_uni, byte_utf8, byte_gbk, byte_in_uni_format_to_unicode))
+            'i am {{{}}}, my unicode is {{{}}}, i am equal to it.'
+            ' for saving space, if i want to be transferred in network or saved on disk, i must be encode in specific code format.'
+            ' using unicode-escape to interpret i will be {{{}}}; using utf8 to interpret i will be {{{}}};'
+            ' using gbk to interpret i will be {{{}}}.'.format(
+                    str_uni, str_raw, unicode_use_uni_to_byte, unicode_use_utf8_to_byte, unicode_use_gbk_to_byte))
+
+    print()
+
+    print(
+            'in unicode-escape format i am bytes {{{}}}; in utf8 format i am bytes {{{}}}; in gbk format i am bytes {{{}}}.'
+            ' for both machine and human readable, we must be transformed to unicode format so that we could be understood.'
+            ' using different encoding format to decode, we will be in uniform unicode format: {{{}}}, as well as {{{}}}'
+            .format(byte_uni, byte_utf8, byte_gbk, str_raw, str_uni))
 
     print()
 
