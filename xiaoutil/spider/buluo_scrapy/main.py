@@ -18,7 +18,7 @@ from scrapy import cmdline
 
 
 def main():
-    cmdline.execute('scrapy crawl buluo_spider'.split())
+    cmdline.execute('scrapy crawl buluo_spider -L INFO -a bid=10'.split())
 
 
 if __name__ == '__main__':
