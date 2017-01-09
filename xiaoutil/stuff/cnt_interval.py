@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 
 
 def interval(j):
-    f = open('C:\\Users\\BaoQiang\\Desktop\\plt\\nums{}.txt'.format(j), 'r', encoding='utf-8')
+    f = open('C:\\Users\\BaoQiang\\Desktop\\plt\\num{}.txt'.format(j), 'r', encoding='utf-8')
     lines = f.readlines()
     nums = [int(float(line.strip()) * 100) for line in lines]
 
@@ -62,6 +62,9 @@ def draw(l, j):
     idx = range(len(l))
     v = [item[1] for item in l]
     rect = plt.bar(idx, np.array(v), bar_width, color='#0072BC', label='hhh')
+
+    plt.xlabel("分值区间",fontproperties='SimHei')
+    plt.ylabel("百分占比",fontproperties='SimHei')
 
     # plt.text(rect.get_x(), rect.get_width() / 2, rect.get_height(), rect.get_height(), ha='center', va='bottom')
     # plt.show()
