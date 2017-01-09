@@ -25,7 +25,7 @@ class BuluoSpiderSpider(scrapy.Spider):
 
         url = 'https://buluo.qq.com/cgi-bin/bar/get_bar_list_by_category'
 
-        for i in range(10, 11):
+        for i in range(10, 60):
             formdata = {
                 'gflag': '1',
                 'sflag': '0',
@@ -48,6 +48,10 @@ class BuluoSpiderSpider(scrapy.Spider):
         json_data = json.loads(response.text)
         category_name = ''
 
+        if json_data['retcode'] is not 0:
+            print(json_data)
+            return
+
         for item in json_data['result']['bars']:
             name = item['name']
             follow = item['fans']
@@ -60,7 +64,7 @@ class BuluoSpiderSpider(scrapy.Spider):
             item = Item(name, follow, topics, intro)
             items.append(item)
 
-        with open("C:\\Users\\BaoQiang\\Desktop\\res.txt", 'a') as fw:
+        with open("C:\\Users\\BaoQiang\\Desktop\\res.txt", 'a', encoding='utf-8') as fw:
             fw.write('{}\n'.format(category_name))
 
             for item in items:
@@ -98,7 +102,7 @@ def form(cnt):
 
 def test_xpath():
     html = open("C:\\Users\\BaoQiang\\Desktop\\10.html", 'r', encoding='utf-8').read()
-    fw = open("C:\\Users\\BaoQiang\\Desktop\\res.txt", 'a')
+    fw = open("C:\\Users\\BaoQiang\\Desktop\\res.txt", 'a',encoding='utf-8')
     root = Selector(text=html)
 
     for item in root.xpath('//li[contains(@class,"collection-item")]'):
